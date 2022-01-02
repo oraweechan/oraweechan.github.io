@@ -17,6 +17,7 @@ padding: 10rem 0;
     flex: 1;
   }
   .aboutSection__right {
+
     img {
         height: 100%;
         width: 100%;
@@ -39,7 +40,7 @@ padding: 10rem 0;
   }
   @media only screen and (max-width: 950px) {
     .aboutSection__left {
-      flex: 4;
+      flex: 3;
     }
     .aboutSection__right {
       flex: 3;
@@ -47,12 +48,14 @@ padding: 10rem 0;
   }
   @media only screen and (max-width: 768px) {
     .smallImg {
-        margin: 1rem;
-        height: 100%;
-        width: 100%;
+        margin: 0 auto;
+        height: 250px;
+        max-width: 100%;
         display: flex;
         border: 2px solid var(--pink);
-
+  }
+  .para {
+    margin-top: 2rem;
   }
     .container {
       flex-direction: column;
