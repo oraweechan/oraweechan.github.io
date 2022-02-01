@@ -88,6 +88,8 @@ export default function Projects() {
           <div className="projects__allItems">
             {projectsData.map((item) => (
               <ProjectItem
+              deployed_url={item.deployed_url} 
+              github_url={item.github_url}
                 key={item.id}
                 img={item.img}
                 title={item.title}

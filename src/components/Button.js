@@ -24,12 +24,16 @@ export default function Button({
   btnLink = "link",
   btnText = "text",
   outline = false,
+  url = 'url',
 }) {
   return (
     <ButtonStyle outline={outline}>
       <div>
         <Link className="button" to={btnLink}>
+      
           {btnText}
+         
+          
         </Link>
       </div>
     </ButtonStyle>

@@ -1,6 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const ProjectItemStyles = styled.div`
   .projectItem__img {
@@ -27,9 +26,23 @@ const ProjectItemStyles = styled.div`
   }
   .projectItem__desc {
     font-size: 1.6rem;
-    font-family: 'RobotoMono Regular';
+    font-family: "RobotoMono Regular";
     margin-top: 1rem;
   }
+
+  .projectItem__desc__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .linkButton {
+    background-color: var(--teal);
+    color: black;
+  }
+
   @media only screen and (max-width: 768px) {
     .projectItem__img {
       height: 350px;
@@ -38,20 +51,30 @@ const ProjectItemStyles = styled.div`
 `;
 
 export default function ProjectItem({
-  img = {img},
-  title = 'Project Name',
-  desc = 'desc',
+  img = { img },
+  title = "Project Name",
+  desc = "desc",
+  deployed_url = "deployed_url",
+  github_url = "github_url",
 }) {
   return (
     <ProjectItemStyles>
-      <Link to="#" className="projectItem__img">
+      <div className="projectItem__img">
         <img src={img} alt="project img" />
-      </Link>
+      </div>
       <div className="projectItem__info">
-        <Link to="#">
-          <h3 className="projectItem__title">{title}</h3>
-        </Link>
+        <h3 className="projectItem__title">{title}</h3>
+
         <p className="projectItem__desc">{desc}</p>
+
+        <div className="projectItem__desc__buttons">
+          <a target="blank" className="liveLinkButton" href={deployed_url}>
+            <input className="linkButton" type="submit" value="Live Link" />
+          </a>
+          <a target="blank" className="githubLinkButton" href={github_url}>
+            <input className="linkButton" type="submit" value="GitHub Link" />
+          </a>
+        </div>
       </div>
     </ProjectItemStyles>
   );

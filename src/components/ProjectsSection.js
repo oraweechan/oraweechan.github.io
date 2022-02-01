@@ -91,7 +91,7 @@ export default function ProjectsSection() {
               if (index >= 3) return;
               return (
                   <SwiperSlide key={project.id}>
-                      <ProjectItem title={project.title} desc={project.desc} img={project.img}/>
+                      <ProjectItem deployed_url={project.deployed_url} github_url={project.github_url} title={project.title} desc={project.desc} img={project.img}/>
                   </SwiperSlide>
               );
             })}
