@@ -4,7 +4,7 @@ import AboutItem from "../components/AboutItem";
 import Button from "../components/ButtonNoLink";
 import ContactBanner from "../components/ContactBanner";
 import PText from "../components/PText";
-import resume from '../data/orawee.pdf'
+import resume from '../data/resume.pdf'
 
 const ProjectItemStyles = styled.div`
 padding: 10rem 0 5rem 0;  
