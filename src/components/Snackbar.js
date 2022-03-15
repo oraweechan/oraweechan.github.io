@@ -1,7 +1,5 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
-import { fontSize } from '@mui/system';
 
 export default function PositionedSnackbar( {children} ) {
   const [state, setState] = React.useState({
