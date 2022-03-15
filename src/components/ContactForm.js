@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import Snackbar from './Snackbar';
-
+import Snackbar from "./Snackbar";
 
 const FormStyle = styled.form`
   .form-group {
@@ -25,7 +24,6 @@ const FormStyle = styled.form`
     // margin-top: 1rem;
   }
 
- 
   textarea {
     min-height: 250px;
     resize: vertical;
@@ -50,20 +48,23 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
   const [submit, setSubmit] = useState(false);
 
-
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
     const data = { name, email, message };
 
-    axios.post('https://sheet.best/api/sheets/80f94af3-0e8e-4f5e-9a35-75fb054d7139', data)
-    .then(response => {
-      // console.log(response);
-      setName("");
-      setEmail("");
-      setMessage("");
-      setSubmit(true);
-    })
-  }
+    axios
+      .post(
+        "https://sheet.best/api/sheets/80f94af3-0e8e-4f5e-9a35-75fb054d7139",
+        data
+      )
+      .then((response) => {
+        // console.log(response);
+        setName("");
+        setEmail("");
+        setMessage("");
+        setSubmit(true);
+      });
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -71,57 +72,45 @@ export default function ContactForm() {
     }, 5000);
   }, [submit]);
 
-  
-
-
   return (
     <>
-      <FormStyle onSubmit={submitHandler} >
+      <FormStyle onSubmit={submitHandler}>
         <div className="form-container">
-       
-        {submit && (<Snackbar submit={submit} >Message sent!</Snackbar>)}
-            
-         
-      
+          {submit && <Snackbar >Message sent!</Snackbar>}
 
-    
-            <div className="form-group">
-              <input
-                placeholder="Name"
+          <div className="form-group">
+            <input
+              placeholder="Name"
+              type="text"
+              id="name"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              placeholder="Email"
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message">
+              Your message
+              <textarea
                 type="text"
-                id="name"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                id="message"
+                name="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
-            </div>
-            <div className="form-group">
-              <input
-                placeholder="Email"
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">
-                Your message
-                <textarea
-                  type="text"
-                  id="message"
-                  name="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-              </label>
-            </div>
-            <button  type="submit"> 
-            Submit</button>
-            
-           
-
+            </label>
+          </div>
+          <button type="submit">Submit</button>
         </div>
       </FormStyle>
     </>

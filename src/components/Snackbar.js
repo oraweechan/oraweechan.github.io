@@ -1,26 +1,38 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
-import { fontSize } from '@mui/system';
+import * as React from "react";
+import Snackbar from "@mui/material/Snackbar";
+import styled from "styled-components";
 
-export default function PositionedSnackbar( {children} ) {
+const SnackbarStyle = styled.div`
+  .message {
+    font-size: 1.8rem;
+    
+  }
+
+  .MuiSnackbarContent-message{
+    margin: 0 auto;  
+  }
+`;
+
+export default function PositionedSnackbar({ children }) {
   const [state, setState] = React.useState({
     open: true,
-    vertical: 'top',
-    horizontal: 'center',
+    vertical: "top",
+    horizontal: "center",
   });
 
   const { vertical, horizontal } = state;
 
-
   return (
-    <div>
-      <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
-        open={true}
-        message={children}
-        key={vertical + horizontal}
-      />
-    </div>
+    <SnackbarStyle>
+      <div >
+        <Snackbar
+        className="snackbar"
+          anchorOrigin={{ vertical, horizontal }}
+          open={true}
+          message={<span className="message">{children}</span>}
+          key={vertical + horizontal}
+        />
+      </div>
+    </SnackbarStyle>
   );
 }
