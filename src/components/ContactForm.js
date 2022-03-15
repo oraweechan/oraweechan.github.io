@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import Snackbar from './Snackbar';
 
 
 const FormStyle = styled.form`
@@ -47,19 +48,8 @@ export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [submit, setSubmit] = useState(false);
 
-
-
-  // const submitHandler = () => {
-  //   const data = { name, email, message };
-  //   axios.post('https://sheet.best/api/sheets/80f94af3-0e8e-4f5e-9a35-75fb054d7139', 
-  //   data
-  //   )
-  //   .then(response => {
-  //     console.log(response);
-  //   })
-    
-  // }
 
   const submitHandler = e => {
     e.preventDefault();
@@ -67,18 +57,32 @@ export default function ContactForm() {
 
     axios.post('https://sheet.best/api/sheets/80f94af3-0e8e-4f5e-9a35-75fb054d7139', data)
     .then(response => {
-      console.log(response);
-      setName("")
-      setEmail("")
-      setMessage("")
+      // console.log(response);
+      setName("");
+      setEmail("");
+      setMessage("");
+      setSubmit(true);
     })
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSubmit(false);
+    }, 5000);
+  }, [submit]);
+
+  
 
 
   return (
     <>
       <FormStyle onSubmit={submitHandler} >
         <div className="form-container">
+       
+        {submit && (<Snackbar submit={submit} >Message sent!</Snackbar>)}
+            
+         
+      
 
     
             <div className="form-group">
