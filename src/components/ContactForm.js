@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+
 const FormStyle = styled.form`
   .form-group {
     width: 100%;
@@ -22,6 +23,8 @@ const FormStyle = styled.form`
     border-radius: 8px;
     // margin-top: 1rem;
   }
+
+ 
   textarea {
     min-height: 250px;
     resize: vertical;
@@ -47,26 +50,37 @@ export default function ContactForm() {
 
 
 
-  const submitHandler = e => {
-    // e.preventDefault();
-    console.log(name);
+  // const submitHandler = () => {
+  //   const data = { name, email, message };
+  //   axios.post('https://sheet.best/api/sheets/80f94af3-0e8e-4f5e-9a35-75fb054d7139', 
+  //   data
+  //   )
+  //   .then(response => {
+  //     console.log(response);
+  //   })
+    
+  // }
 
-    // axios.post('url', name)
-    // .then(response => {
-    //   console.log(response);
-    // })
+  const submitHandler = e => {
+    e.preventDefault();
+    const data = { name, email, message };
+
+    axios.post('https://sheet.best/api/sheets/80f94af3-0e8e-4f5e-9a35-75fb054d7139', data)
+    .then(response => {
+      console.log(response);
+      setName("")
+      setEmail("")
+      setMessage("")
+    })
   }
 
-    // axios.post("url", name, email, message).then((response) => {
-    //   console.log(response);
-    // });
-  
 
   return (
     <>
-      <FormStyle>
+      <FormStyle onSubmit={submitHandler} >
         <div className="form-container">
-          <form onSubmit={submitHandler}> 
+
+    
             <div className="form-group">
               <input
                 placeholder="Name"
@@ -99,8 +113,11 @@ export default function ContactForm() {
                 />
               </label>
             </div>
-            <button type="submit">Send</button>
-          </form>
+            <button  type="submit"> 
+            Submit</button>
+            
+           
+
         </div>
       </FormStyle>
     </>
