@@ -76,7 +76,8 @@ export default function ContactForm() {
     <>
       <FormStyle onSubmit={submitHandler}>
         <div className="form-container">
-          {submit && <Snackbar submit={submit}>Message sent!</Snackbar>}
+
+          {submit && <Snackbar >Message sent!</Snackbar>}
 
           <div className="form-group">
             <input
