@@ -25,7 +25,7 @@ const HeroStyles = styled.div`
     }
     .hero__name {
       font-family: 'Montserrat SemiBold';
-      font-size: 7rem;
+      font-size: 9rem;
       color: var(--pink);
     }
   }
@@ -101,10 +101,10 @@ const HeroStyles = styled.div`
       min-height: 750px;
     }
     .hero__heading {
-      font-size: 1.4rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
       .hero__name {
-        font-size: 2.5rem;
+        font-size: 5rem;
       }
     }
     .hero__img {
@@ -158,7 +158,7 @@ export default function HeroSection() {
         <div className="container">
           <h1 className="hero__heading">
             <span>Hello, my name is</span>
-            <span className="hero__name">Orawee Chantravutikorn</span>
+            <span className="hero__name">Orawee </span>
           </h1>
           <div className="hero__img">
             {/* <img
