@@ -58,6 +58,7 @@ export default function Projects() {
       )
     );
   }, [searchText]);
+  
   const handleChange = (e) => {
     e.preventDefault();
     setSearchText(e.target.value);
